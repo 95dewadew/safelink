@@ -1,11 +1,11 @@
-read -p "Please enter the username: " newname
+read -p "Please enter the username: " username
     cd /etc/wireguard/
-    cp client-wg0.conf $newname.conf
+    cp client-wg0.conf $username.conf
     wg genkey | tee temprikey | wg pubkey > tempubkey
     ipnum=$(grep Allowed /etc/wireguard/wg0.conf | tail -1 | awk -F '[ ./]' '{print $6}')
     newnum=$((10#${ipnum}+1))
-    sed -i 's%^PrivateKey.*$%'"PrivateKey = $(cat temprikey)"'%' $newname.conf
-    sed -i 's%^Address.*$%'"Address = 10.0.0.$newnum\/24"'%' $newname.conf
+    sed -i 's%^PrivateKey.*$%'"PrivateKey = $(cat temprikey)"'%' $username.conf
+    sed -i 's%^Address.*$%'"Address = 10.9.0.$newnum\/24"'%' $username.conf
 
 cat >> /etc/wireguard/wg0.conf <<-EOF
 [Peer]
@@ -13,8 +13,8 @@ PublicKey = $(cat tempubkey)
 AllowedIPs = 10.9.0.$newnum/32
 EOF
     wg set wg0 peer $(cat tempubkey) allowed-ips 10.9.0.$newnum/32
-    cp $newname.conf /home/vps/public_html/
-    qrencode -t ansiutf8  < /etc/wireguard/$newname.conf
-    qrencode -o $userdir/$user.png  < /etc/wireguard/$newname.conf
-    echo -e "Add complete, file directory：/etc/wireguard/$newname.conf"
+    cp $username.conf /home/vps/public_html/
+    qrencode -t ansiutf8  < /etc/wireguard/$username.conf
+    qrencode -o $userdir/$user.png  < /etc/wireguard/$username.conf
+    echo -e "Add complete, file directory：/etc/wireguard/$username.conf"
     rm -f temprikey tempubkey
