@@ -127,6 +127,7 @@ PublicKey = $SERVER_PUBKEY
 AllowedIPs = 0.0.0.0/0, ::/0
 Endpoint = $SERVER_HOST:$SERVER_PORT
 PersistentKeepalive = 25" > $HOME/client-wg0.conf
+cp client-wg0.conf /etc/wireguard/
 qrencode -t ansiutf8 -l L < $HOME/client-wg0.conf
 
     echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
@@ -186,6 +187,7 @@ PublicKey = $SERVER_PUBKEY
 AllowedIPs = 0.0.0.0/0, ::/0 
 Endpoint = $SERVER_ENDPOINT
 PersistentKeepalive = 25" > $HOME/$CLIENT_NAME-wg0.conf
+cp client-wg0.conf /etc/wireguard/
 qrencode -t ansiutf8 -l L < $HOME/$CLIENT_NAME-wg0.conf
 
     ip address | grep -q wg0 && wg set wg0 peer "$CLIENT_PUBKEY" allowed-ips "$CLIENT_ADDRESS/32"
