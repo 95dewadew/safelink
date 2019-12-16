@@ -57,7 +57,7 @@ if [ ! -f "$WG_CONFIG" ]; then
     fi
 
     if [ "$SERVER_PORT" == "" ]; then
-        SERVER_PORT="8989"
+        SERVER_PORT="51820"
     fi
 
     if [ "$CLIENT_DNS" == "" ]; then
