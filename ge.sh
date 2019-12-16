@@ -1,6 +1,5 @@
 read -p "Please enter the username: " newname
-    cd /etc/wireguard/
-    cp client.conf $newname.conf
+    cp client-wg0.conf $newname.conf
     wg genkey | tee temprikey | wg pubkey > tempubkey
     ipnum=$(grep Allowed /etc/wireguard/wg0.conf | tail -1 | awk -F '[ ./]' '{print $6}')
     newnum=$((10#${ipnum}+1))
