@@ -1,8 +1,4 @@
 #!/bin/bash
-#
-# https://github.com/l-n-s/wireguard-install
-#
-# Copyright (c) 2018 Viktor Villainov. Released under the MIT License.
 
 WG_CONFIG="/etc/wireguard/wg0.conf"
 
@@ -61,7 +57,7 @@ if [ ! -f "$WG_CONFIG" ]; then
     fi
 
     if [ "$SERVER_PORT" == "" ]; then
-        SERVER_PORT="51820"
+        SERVER_PORT="8989"
     fi
 
     if [ "$CLIENT_DNS" == "" ]; then
