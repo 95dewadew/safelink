@@ -10,9 +10,10 @@ read -p "Please enter the username: " newname
 cat >> /etc/wireguard/wg0.conf <<-EOF
 [Peer]
 PublicKey = $(cat tempubkey)
-AllowedIPs = 10.0.0.$newnum/32
+AllowedIPs = 10.9.0.$newnum/32
 EOF
-    wg set wg0 peer $(cat tempubkey) allowed-ips 10.0.0.$newnum/32
+    wg set wg0 peer $(cat tempubkey) allowed-ips 10.9.0.$newnum/32
+    cp $newname.conf /home/vps/public_html/
     qrencode -t ansiutf8  < /etc/wireguard/$newname.conf
     qrencode -o $userdir/$user.png  < /etc/wireguard/$newname.conf
     echo -e "Add complete, file directory：/etc/wireguard/$newname.conf"
