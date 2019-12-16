@@ -15,6 +15,6 @@ EOF
     wg set wg0 peer $(cat tempubkey) allowed-ips 10.9.0.$newnum/32
     cp $username.conf /home/vps/public_html/
     qrencode -t ansiutf8  < /etc/wireguard/$username.conf
-    qrencode -o $userdir/$user.png  < /etc/wireguard/$username.conf
+
     echo -e "Add complete, file directory：/etc/wireguard/$username.conf"
     rm -f temprikey tempubkey
