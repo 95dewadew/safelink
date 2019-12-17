@@ -1,4 +1,4 @@
-read -p "Please enter the username: " username
+
     cd /etc/wireguard/
     cp client-wg0.conf $username.conf
     wg genkey | tee temprikey | wg pubkey > tempubkey
@@ -16,5 +16,5 @@ EOF
     cp $username.conf /home/vps/public_html/
     qrencode -t ansiutf8  < /etc/wireguard/$username.conf
 
-    echo -e "Add complete, file directory：/etc/wireguard/$username.conf"
+    echo -e "Add complete, file directory：/$username.conf"
     rm -f temprikey tempubkey
