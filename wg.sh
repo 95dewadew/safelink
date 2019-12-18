@@ -16,5 +16,5 @@ EOF
     cp $username.conf /home/vps/public_html/
     qrencode -t ansiutf8  < /etc/wireguard/$username.conf
 
-    echo -e "Add complete, file directory：/$username.conf"
+    echo -e "Add complete, download file user：http://wire.jagoan.best:81/$username.conf"
     rm -f temprikey tempubkey
