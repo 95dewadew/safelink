@@ -1,4 +1,4 @@
-add_user() {
+
     cd /etc/wireguard/
     cp client-wg0.conf $username.conf
     wg genkey | tee temprikey | wg pubkey > tempubkey
@@ -18,4 +18,3 @@ EOF
 
     echo -e "Add complete, file directory：/$username.conf"
     rm -f temprikey tempubkey
-}
