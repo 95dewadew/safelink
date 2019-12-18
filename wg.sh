@@ -1,4 +1,4 @@
-
+add_user() {
     cd /etc/wireguard/
     cp client-wg0.conf $username.conf
     wg genkey | tee temprikey | wg pubkey > tempubkey
@@ -18,3 +18,11 @@ EOF
 
     echo -e "Add complete, file directory：/$username.conf"
     rm -f temprikey tempubkey
+}
+
+do_clear() {
+    local interface=$_INTERFACE
+    wg-quick down $interface
+    > $WG_CONF_FILE
+    rm -f ${SAVED_FILE} ${AVAILABLE_IP_FILE}
+}
