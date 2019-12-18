@@ -1,4 +1,4 @@
-
+    read -p "Please enter the username: " username
     cd /etc/wireguard/
     cp client-wg0.conf $username.conf
     wg genkey | tee temprikey | wg pubkey > tempubkey
